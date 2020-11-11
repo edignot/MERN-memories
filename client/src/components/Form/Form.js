@@ -30,12 +30,23 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault()
     if (currentId) {
       dispatch(updatePost(currentId, postData))
+      clear()
     } else {
       dispatch(createPost(postData))
+      clear()
     }
   }
 
-  const clear = () => {}
+  const clear = () => {
+    setCurrentId(null)
+    setPostData({
+      creator: '',
+      title: '',
+      message: '',
+      tags: '',
+      selectedFile: '',
+    })
+  }
 
   return (
     <Paper className={classes.paper}>
@@ -45,7 +56,9 @@ const Form = ({ currentId, setCurrentId }) => {
         className={`${classes.form} ${classes.root}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant='h6'>Creating a memory</Typography>
+        <Typography variant='h6'>
+          {currentId ? 'Edit Memory' : 'Create Memory'}
+        </Typography>
         <TextField
           name='creator'
           variant='outlined'
