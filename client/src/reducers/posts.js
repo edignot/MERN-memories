@@ -4,6 +4,14 @@ export default (posts = [], action) => {
       return action.payload
     case 'CREATE':
       return [...posts, action.payload]
+    case 'UPDATE':
+      return posts.map((post) => {
+        if (post._id === action.payload._id) {
+          return action.payload
+        } else {
+          return post
+        }
+      })
     default:
       return posts
   }

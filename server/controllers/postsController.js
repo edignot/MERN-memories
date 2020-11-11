@@ -23,9 +23,9 @@ export const createPost = async (req, res) => {
 export const updatePost = async (req, res) => {
   const { id: _id } = req.params
   const post = request.body
-  if (!mongoose.types.ObjectId.isValid(_id)) res.status(404).send('Not found')
+  if (!mongoose.Types.ObjectId.isValid(_id)) res.status(404).send('Not found')
   const updatedPost = await Post.findByIdAndUpdate(_id, post, { new: true })
-  res.status(200).json(updatePost)
+  res.status(200).json(updatedPost)
 }
 
 export const deletePost = async (req, res) => {
