@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = 'http://localhost:6000/posts'
+const url = 'http://localhost:8000/posts'
 
 export const fetchPosts = async () => {
   await axios.get(url)

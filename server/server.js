@@ -15,7 +15,7 @@ app.use(cors())
 
 app.use('/posts', postsRouter)
 
-const PORT = process.env.PORT || 6000
+const PORT = process.env.PORT || 8000
 
 mongoose
   .connect(process.env.ATLAS_URI, {
